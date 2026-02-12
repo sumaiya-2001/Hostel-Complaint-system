@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Complaint System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header with Admin Button -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🏠 Hostel Room Complaint System</h1>
+            </div>
+            <button class="admin-btn" id="adminBtn">🔧 Admin Panel</button>
+        </header>
+
+        <!-- Admin Login Modal -->
+        <div id="adminModal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeAdminModal">&times;</span>
+                <h2>🔐 Admin Login</h2>
+                <form action="admin.php" method="POST" id="adminLoginForm">
+                    <div class="form-group">
+                        <label for="adminPassword">Password:</label> 
+                        <input type="password" id="adminPassword" name="password" required 
+                               placeholder="Enter admin password">
+                    </div>
+                    <button type="submit" class="submit-btn">Login to Dashboard</button>  <!-- pw=admin123 -->
+                    
+                </form>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="form-section">
+                <h2>📝 Submit Complaint</h2>
+                <form action="submit_complaint.php" method="POST" id="complaintForm">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name </label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg_number">Registration No </label>
+                            <input type="text" id="reg_number" name="reg_number" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="year">Year </label>
+                            <select id="year" name="year" required>
+                                <option value="">Select Year</option> 
+                                <option value="First Year">First Year</option>
+                                <option value="Second Year">Second Year</option>
+                                <option value="Third Year">Third Year</option>
+                                <option value="Fourth Year">Fourth Year</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="faculty">Faculty </label>
+                            <select id="faculty" name="faculty" required>
+                                <option value="">Select Faculty</option>
+                                <option value="Science">Science</option>
+                                <option value="Engineering">Engineering</option>
+                                <option value="Management">Management</option>
+                                <option value="Humanities">Humanities</option>
+                                <option value="Medicine">Medicine</option>
+                                <option value="Law">Law</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="hostel">Hostel </label>
+                            <select id="hostel" name="hostel" required> 
+                                <option value="">Select Hostel</option>
+                                <option value="Hostel A">Hostel A</option>
+                                <option value="Hostel B">Hostel B</option>
+                                <option value="Hostel C">Hostel C</option>
+                                <option value="Hostel D">Hostel D</option>
+                                <option value="Hostel E">Hostel E</option>
+                                <option value="International Hostel">International Hostel</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="room_number">Room No </label>
+                            <input type="text" id="room_number" name="room_number" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="complaint_type">Complaint Type </label>
+                        <select id="complaint_type" name="complaint_type" required>
+                            <option value="">Select Type</option>
+                            <option value="Electrical">Electrical</option>
+                            <option value="Plumbing">Plumbing</option>
+                            <option value="Furniture">Furniture</option>
+                            <option value="Internet">Internet</option>
+                            <option value="Cleanliness">Cleanliness</option>
+                            <option value="Security">Security</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description </label>
+                        <textarea id="description" name="description" rows="4" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="priority">Priority</label>
+                        <select id="priority" name="priority">
+                            <option value="Low">Low</option>
+                            <option value="Medium" selected>Medium</option>
+                            <option value="High">High</option>
+                            <option value="Urgent">Urgent</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit Complaint</button>
+                </form>
+            </div>
+
+            <div class="info-section">
+                <div class="info-card">
+                    <h3>📞 Contact Information</h3>
+                    <div class="contact-info">
+                        <p><strong>Hostel Office:</strong> Room 101, Admin Block</p>
+                        <p><strong>Email:</strong> hostel@college.edu</p>
+                        <p><strong>Phone:</strong> +977-01-12345</p>
+                        <p><strong>Hours:</strong> 9 AM - 5 PM (Mon-Fri)</p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h3>⏱️ Response Timeline</h3>
+                    <div class="timeline">
+                        <p><span class="urgent">Urgent:</span> 2-4 hours</p>
+                        <p><span class="high">High:</span> 6-12 hours</p>
+                        <p><span class="medium">Medium:</span> 24 hours</p>
+                        <p><span class="low">Low:</span> 48 hours</p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h3>📋 Quick Status Check</h3>
+                    <div class="status-check">
+                        <input type="text" id="complaintId" placeholder="Enter Complaint ID">
+                        <button class="check-btn" id="checkStatusBtn">Check Status</button>
+                    </div>
+                    <div id="statusResult" class="status-result"></div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2024 Hostel Complaint System</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
